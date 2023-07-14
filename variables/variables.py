@@ -26,16 +26,16 @@ n_subdomains_z = 1
 tendon_material = "nonLinear"
 #tendon_material = "linear"
 
-muscle1_extent = [3.0, 3.0, 14.8] # [cm, cm, cm]
-n_elements_muscle1 = [4, 4, 20] # linear elements. each qudaratic element uses the combined nodes of 8 linear elements
-n_points_whole_fiber = 40
-n_fibers_x = 4
-n_fibers_y = 4
+muscle1_extent = [3.0, 3.0, 7.4] # [cm, cm, cm]
+n_elements_muscle1 = [8, 8, 20] # linear elements. each qudaratic element uses the combined nodes of 8 linear elements
+n_points_whole_fiber = 60
+n_fibers_x = 6
+n_fibers_y = 6
 
 
-tendon_extent = [3.0, 3.0, 2.96] # [cm, cm, cm] 2.96
+tendon_extent = [3.0, 3.0, 1.48] # [cm, cm, cm] 2.96
 tendon_offset = [0.0, 0.0, muscle1_extent[2]]
-n_elements_tendon = [4,4, 4] 
+n_elements_tendon = [8,8, 4] 
 
 rho = 10   ## [1e-4 kg/cm^3] density of the water
 

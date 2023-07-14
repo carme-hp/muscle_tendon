@@ -48,16 +48,16 @@
     <!-- Communication method, use TCP sockets, Change network to "ib0" on SuperMUC -->
     <m2n:sockets from="TendonSolver" to="MuscleSolverLeft" network="lo" /> 
     
-     <coupling-scheme:serial-explicit>
+    <coupling-scheme:serial-explicit>
       <participants second="TendonSolver" first="MuscleSolverLeft"/>
       <max-time value="20.0"/>           
       <time-window-size value="0.01"/>   
       <exchange data="Displacement"    mesh="TendonMeshLeft"    from="TendonSolver" to="MuscleSolverLeft"/>
       <exchange data="Velocity"    mesh="TendonMeshLeft"    from="TendonSolver" to="MuscleSolverLeft"/>
       <exchange data="Traction"        mesh="MuscleMeshLeft" from="MuscleSolverLeft" to="TendonSolver"/>  
-    </coupling-scheme:serial-explicit>  
-
-    <!-- <coupling-scheme:parallel-implicit>
+    </coupling-scheme:serial-explicit>
+<!-- 
+    <coupling-scheme:parallel-implicit>
       <participants first="MuscleSolverLeft" second="TendonSolver"/>
 
       <max-time value="20.0"/>           
@@ -76,15 +76,16 @@
         <initial-relaxation value="0.9"/>
         <max-used-iterations value="40"/>
         <time-windows-reused value="15"/>
-      </acceleration:IQN-ILS>
+      </acceleration:IQN-ILS> 
 
-      <max-iterations value="25"/>
+      <max-iterations value="2"/>
+      <min-iteration-convergence-measure min-iterations="2" data="Displacement" mesh="TendonMeshLeft" strict="0" suffices="0"/>
 
-      <relative-convergence-measure limit="1e-5" data="Displacement" mesh="TendonMeshLeft" strict="0"/>
-      <relative-convergence-measure limit="1e-5" data="Velocity" mesh="TendonMeshLeft" strict="0"/>
-      <absolute-convergence-measure limit="1e-4" data="Traction" mesh="MuscleMeshLeft" strict="0"/> 
+     <absolute-convergence-measure limit="1e-5" data="Displacement" mesh="TendonMeshLeft" strict="0"/>
+      <absolute-convergence-measure limit="1e-5" data="Velocity" mesh="TendonMeshLeft" strict="0"/>
+      <absolute-convergence-measure limit="1e-8" data="Traction" mesh="MuscleMeshLeft" strict="0"/>  
 
 
     </coupling-scheme:parallel-implicit>-->
-  </solver-interface>
+  </solver-interface> 
 </precice-configuration>

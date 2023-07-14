@@ -5,3 +5,4 @@ variables/__pycache__/
 .scons*
 .sconf_temp/
 precice-*
+config.log
