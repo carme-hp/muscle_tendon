@@ -70,8 +70,8 @@ variables.n_fibers_total = variables.n_fibers_x * variables.n_fibers_y
 
 #### set Dirichlet BC and Neumann BC for the free side of the muscle
 
-[nx, ny, nz] = [elem + 1 for elem in variables.n_elements_muscle1]
-[mx, my, mz] = [elem // 2 for elem in variables.n_elements_muscle1] # quadratic elements consist of 2 linear elements along each axis
+[nx, ny, nz] = [elem + 1 for elem in variables.n_elements_muscle]
+[mx, my, mz] = [elem // 2 for elem in variables.n_elements_muscle] # quadratic elements consist of 2 linear elements along each axis
 
 k = 0 #free side of the muscle
 
@@ -86,8 +86,8 @@ for j in range(ny):
 muscle_meshes = {
 
   "muscle1Mesh": {
-    "nElements" :         variables.n_elements_muscle1,
-    "physicalExtent":     variables.muscle1_extent,
+    "nElements" :         variables.n_elements_muscle,
+    "physicalExtent":     variables.muscle_extent,
     "physicalOffset":     [0,0,0],
     "logKey":             "muscle1",
     "inputMeshIsGlobal":  True,
@@ -96,8 +96,8 @@ muscle_meshes = {
 
   # needed for mechanics solver
   "muscle1Mesh_quadratic": {
-    "nElements" :         [elems // 2 for elems in variables.n_elements_muscle1],
-    "physicalExtent":     variables.muscle1_extent,
+    "nElements" :         [elems // 2 for elems in variables.n_elements_muscle],
+    "physicalExtent":     variables.muscle_extent,
     "physicalOffset":     [0,0,0],
     "logKey":             "muscle1_quadratic",
     "inputMeshIsGlobal":  True,

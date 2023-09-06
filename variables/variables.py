@@ -154,33 +154,8 @@ def get_from_obj(data, path):
 # σ (Cauchy stress)
 # J
 
-def muscle_left_write_to_file(data):
-    t = get_from_obj(data, [0, 'currentTime'])
-    z_data = get_from_obj(data, [0, 'data', ('name','geometry'), 'components', 2, 'values'])
 
-    [mx, my, mz] = get_from_obj(data, [0, 'nElementsLocal'])
-    nx = 2*mx + 1
-    ny = 2*my + 1
-    nz = 2*mz + 1
-    # compute average z-value of end of muscle
-    z_value_begin = 0.0
-    z_value_end = 0.0
-
-    for j in range(ny):
-        for i in range(nx):
-            z_value_begin += z_data[j*nx + i]
-            z_value_end += z_data[(nz-1)*nx*ny + j*nx + i]
-
-
-    z_value_begin /= ny*nx
-    z_value_end /= ny*nx
-
-
-    f = open("muscle_left.txt", "a")
-    f.write("{:6.2f} {:+2.8f} {:+2.8f}\n".format(t,z_value_begin, z_value_end))
-    f.close()
-
-def muscle_right_write_to_file(data):
+def muscle_write_to_file(data):
     t = get_from_obj(data, [0, 'currentTime'])
     z_data = get_from_obj(data, [0, 'data', ('name','geometry'), 'components', 2, 'values'])
 
@@ -200,7 +175,7 @@ def muscle_right_write_to_file(data):
     z_value_begin /= ny*nx
     z_value_end /= ny*nx
 
-    f = open("muscle_right.txt", "a")
+    f = open("muscle.txt", "a")
     f.write("{:6.2f} {:+2.8f} {:+2.8f}\n".format(t,z_value_begin, z_value_end))
     f.close()
 

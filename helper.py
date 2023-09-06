@@ -47,15 +47,15 @@ for j in range(variables.n_fibers_y):
     fiber_no = j*variables.n_fibers_x + i
     
     # determine start position of fiber in (x,y)-plane
-    x = 0 + i / (variables.n_fibers_x - 1) * variables.muscle1_extent[0]
-    y = 0 + j / (variables.n_fibers_y - 1) * variables.muscle1_extent[1]
+    x = 0 + i / (variables.n_fibers_x - 1) * variables.muscle_extent[0]
+    y = 0 + j / (variables.n_fibers_y - 1) * variables.muscle_extent[1]
 
     # loop over points of a single fiber
     node_positions = []
     for k in range(variables.n_points_whole_fiber):
       x_pos = x
       y_pos = y
-      z_pos = 0.0 + k / (variables.n_points_whole_fiber - 1) * variables.muscle1_extent[2]
+      z_pos = 0.0 + k / (variables.n_points_whole_fiber - 1) * variables.muscle_extent[2]
       node_positions.append([x_pos,y_pos,z_pos])
     
     mesh_name = "muscle1_fiber{}".format(fiber_no)
