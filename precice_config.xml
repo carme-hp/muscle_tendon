@@ -72,18 +72,17 @@
         <data name="Velocity" mesh="TendonMeshLeft"/>
         <data name="Traction" mesh="MuscleMeshLeft"/>
         <preconditioner type="residual-sum"/>
-        <filter type="QR2" limit="1e-2"/>
-        <initial-relaxation value="0.9"/>
+        <filter type="QR2" limit="1e-3"/>
+        <initial-relaxation value="0.1"/>
         <max-used-iterations value="40"/>
         <time-windows-reused value="15"/>
       </acceleration:IQN-ILS> 
 
-      <max-iterations value="2"/>
-      <min-iteration-convergence-measure min-iterations="2" data="Displacement" mesh="TendonMeshLeft" strict="0" suffices="0"/>
+      <max-iterations value="25"/>
 
-     <absolute-convergence-measure limit="1e-5" data="Displacement" mesh="TendonMeshLeft" strict="0"/>
-      <absolute-convergence-measure limit="1e-5" data="Velocity" mesh="TendonMeshLeft" strict="0"/>
-      <absolute-convergence-measure limit="1e-8" data="Traction" mesh="MuscleMeshLeft" strict="0"/>  
+     <absolute-convergence-measure limit="1e-3" data="Displacement" mesh="TendonMeshLeft" strict="0"/>
+      <absolute-convergence-measure limit="1e-2" data="Velocity" mesh="TendonMeshLeft" strict="0"/>
+      <absolute-convergence-measure limit="1e-1" data="Traction" mesh="MuscleMeshLeft" strict="0"/>  
 
 
     </coupling-scheme:parallel-implicit>-->
